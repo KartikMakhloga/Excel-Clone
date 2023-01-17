@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Inconsolata', monospace;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
   display: flex;
   width: 100%;
   height: 4%;
+  background-color: rgb(51, 91, 51);
   /* border: 1px solid; */
 }
 
@@ -41,8 +43,8 @@ body {
 
 .menu-bar p:hover,
 .menu-bar-option-selected {
-  background-color: green;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .menu-options {
@@ -70,9 +72,13 @@ body {
 }
 
 .grid {
+  position: relative;
   width: 100%;
   height: 78.5%;
-  background-color: yellow;
+  background-color: rgb(255, 255, 212);
+  overflow: auto;
+  padding-top: 30px;
+  padding-left: 30px;
 }
 
 .sheets-bar {
@@ -96,7 +102,6 @@ body {
 
 .menu-options div {
   height: 100%;
-  border: 1px solid black;
 }
 
 .b-u-i,
@@ -104,8 +109,9 @@ body {
 .alignment {
   width: 20%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  cursor: pointer;
 }
 
 .font-style {
@@ -113,4 +119,62 @@ body {
   justify-content: center;
   align-items: center;
   width: 40%;
+}
+
+.blank-corner{
+  height: 30px;
+  width: 30px;
+  background-color: rgb(0, 26, 0);
+  position: fixed;
+  top: 17.5vh;
+  left: 0;
+  z-index: 3;
+}
+
+.column-tags{
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 30px;
+}
+
+.column-tag-cell{
+  height: 30px;
+  width: 80px;
+  background-color: rgb(188, 242, 188);
+  border: 1px solid white;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.row-numbers{
+  position: absolute;
+  left: 0;
+  top: 30px;
+}
+
+.row-number-cell{
+  height: 30px;
+  width: 30px;
+  border: 1px solid white;
+  background-color: rgb(188, 242, 188);
+  text-align: center;
+  padding-top: 5px;
+}
+
+.row{
+  display: flex;
+}
+
+.cell{
+  height: 30px;
+  width: 80px;
+  border: 1px solid green;
+  flex-shrink: 0;
+  outline: none;
+  /* overflow: hidden; */
+}
+
+.grid-selected-cell{
+  border: 3px solid #34ace0 ;
 }

@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.title-bar {
+  display: flex;
+  width: 100%;
+  height: 3.5%;
+  background-color: green;
+  color: white;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-bar {
+  display: flex;
+  width: 100%;
+  height: 4%;
+  /* border: 1px solid; */
+}
+
+.menu-bar p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  margin-left: 10px;
+  cursor: pointer;
+  height: 100%;
+}
+
+.menu-bar p:hover,
+.menu-bar-option-selected {
+  background-color: green;
+  color: white;
+}

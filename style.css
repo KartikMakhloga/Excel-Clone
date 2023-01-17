@@ -44,3 +44,73 @@ body {
   background-color: green;
   color: white;
 }
+
+.menu-options {
+  height: 6%;
+  width: 100%;
+}
+
+.formula-bar {
+  height: 4%;
+  width: 100%;
+}
+
+.formula-bar input {
+  height: 100%;
+  border: 1px solid green;
+  outline: none;
+}
+
+#select-cell {
+  width: 20%;
+}
+
+#complete-formula {
+  width: 80%;
+}
+
+.grid {
+  width: 100%;
+  height: 78.5%;
+  background-color: yellow;
+}
+
+.sheets-bar {
+  height: 4%;
+  width: 100%;
+}
+
+.sheets-bar div {
+  border: 1px solid green;
+  height: 100%;
+  width: 20%;
+  color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-options {
+  display: flex;
+}
+
+.menu-options div {
+  height: 100%;
+  border: 1px solid black;
+}
+
+.b-u-i,
+.colors,
+.alignment {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.font-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}

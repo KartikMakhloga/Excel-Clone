@@ -1,26 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <!-- complete excel app reside here -->
     <div class="container">
-        <div class="title-bar" contenteditable="true">Book - 1</div>
-        <div class="menu-bar">
-            <p>File</p>
-            <p>Edit</p>
-            <p>Help</p>
+      <div class="title-bar" contenteditable="true">Book - 1</div>
+      <div class="menu-bar">
+        <p>File</p>
+        <p>Edit</p>
+        <p>Help</p>
+      </div>
+      <div class="menu-options">
+        <div class="b-u-i">
+          <span class="material-symbols-outlined"> format_bold </span>
+          <span class="material-symbols-outlined"> format_italic </span>
+          <span class="material-symbols-outlined"> format_underlined </span>
         </div>
-        <div class="menu-options"></div>
-        <div class="formula-bar"></div>
-        <div class="grid"></div>
-        <div class="sheets-bar"></div>
+        <div class="font-style">
+          <select id="cell-font-family">
+            <option value="arial">arial</option>
+            <option value="helvetica">helvetica</option>
+            <option value="open sans">open sans</option>
+            <option value="times new roman">times new roman</option>
+          </select>
+          <select id="cell-font-size">
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+        <div class="alignment">
+          <span class="material-symbols-outlined"> format_align_left </span>
+          <span class="material-symbols-outlined"> format_align_center </span>
+          <span class="material-symbols-outlined"> format_align_right </span>
+        </div>
+        <div class="colors">
+          <span class="material-symbols-outlined"> format_color_text </span>
+          <span class="material-symbols-outlined"> format_color_fill </span>
+        </div>
+      </div>
+      <div class="formula-bar">
+        <input id="select-cell" /><input id="complete-formula" />
+      </div>
+      <div class="grid"></div>
+      <div class="sheets-bar">
+        <div>Sheet - 1</div>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

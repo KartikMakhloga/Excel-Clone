@@ -27,7 +27,7 @@ for (let i = 0; i < 26; i++) {
   div.classList.add("column-tag-cell");
   div.innerText = String.fromCharCode(65 + i);
   columnTags.append(div);
-}
+} 
 
 for (let i = 1; i <= 100; i++) {
   let div = document.createElement("div");

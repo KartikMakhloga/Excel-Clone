@@ -27,7 +27,7 @@ for (let i = 0; i < 26; i++) {
   div.classList.add("column-tag-cell");
   div.innerText = String.fromCharCode(65 + i);
   columnTags.append(div);
-} 
+}
 
 for (let i = 1; i <= 100; i++) {
   let div = document.createElement("div");
@@ -60,3 +60,10 @@ for (let j = 1; j <= 100; j++) {
   }
   grid.append(row);
 }
+
+// How can a cell have a value?
+//   1- Direct input (not dependent on any other cell)
+//   2- formula (dependent on cells which are present in formula)
+//    for eg-> C1 = A1 + B1
+
+//    here, C1 is dependent party and A1,B1 is not dependent party

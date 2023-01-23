@@ -88,25 +88,25 @@ for (let j = 1; j <= 100; j++) {
 //            value: 50  se  60 hogya yaha pe
 //            formula: ""  [no change]
 //            upstream: [no change]
-//            downstream: [A1,B1,C1] teeno update honge agar value array change hogi
+//            downstream: [A1,B1,C1] teeno update honge according to value array
 
 // case 2:     di -> f  [worst case]    [Z6 + D9]  Z6=20, D9=50
             
 //            value: 20 se 70 hojayega
 //            formula: "" se "Z6 + D9" hojayega
 //            upstream: empty se [Z6,D9]
-//            downstream: [A1,B1,C1] teeno update honge 
+//            downstream: [A1,B1,C1] teeno update honge according to value array
 
 // case 3:      f -> f  [worst case]  C1 -> 2 * D2
 
 //             value: 30 se update hojayega
 //             formula: "3 * A1" se "2 * D2" hojayega
 //             upstream: [A1] se [D2] and D2 downstream mei khudko daalna padega or A2 ki downstream se remove kardenge
-//             downstream: [B1] update honga
+//             downstream: [B1] update hoga according to value array
 
 // case 4:      f -> di  [worst case]  
 
 //             value: 20 se 30 update karenge
 //             formula: "2 * B1" se "" hojayega
 //             upstream: [B1] se [empty] hojayega lekin usse pehle B1 ki downstream se apne aap ko remove kr denge 
-//             downstream: [D1,E1] update honge
+//             downstream: [D1,E1] update honge according to value array

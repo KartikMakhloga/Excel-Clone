@@ -110,3 +110,19 @@ for (let j = 1; j <= 100; j++) {
 //             formula: "2 * B1" se "" hojayega
 //             upstream: [B1] se [empty] hojayega lekin usse pehle B1 ki downstream se apne aap ko remove kr denge 
 //             downstream: [D1,E1] update honge according to value array
+
+// (3*)
+
+// A- Grid -> (DI)
+
+//    - update value
+//    - if formula -> clear it 
+//    - upstream ke elements ko bolo mujhe apni downstream se karo remove and apni upstream krdo empty
+//    - downstream ke elements ko  bolo bhaiya apnil value update krlo
+
+// B- Formula Bar (formula)
+   
+//    - formula evaluate update
+//    - fomula Change 
+//    - upstream purane elements ki downstream se remove hoge or new elements add karoge
+//    - downstream khudko update krlo

@@ -5,6 +5,7 @@ let rowNumbers = document.querySelector(".row-numbers");
 let grid = document.querySelector(".grid");
 let oldCell;
 let formulaSelectCell = document.querySelector("#select-cell");
+let dataObj = {};
 
 let menuBarPtags = document.querySelectorAll(".menu-bar p");
 
@@ -42,7 +43,15 @@ for (let j = 1; j <= 100; j++) {
   for (let i = 0; i < 26; i++) {
     let cell = document.createElement("div");
     cell.classList.add("cell");
-    cell.setAttribute("data-address", String.fromCharCode(i + 65) + j);
+    let address = String.fromCharCode(i + 65) + j;
+    cell.setAttribute("data-address", address);
+
+    dataObj[address] = {
+      value:"",
+      formula:"",
+      upstream:[],
+      downsteam: [],
+    }
 
     cell.addEventListener("click", function (e) {
       //checking any cell selected already or not
@@ -57,8 +66,90 @@ for (let j = 1; j <= 100; j++) {
     });
     cell.contentEditable = true;
     row.append(cell);
+
+    cell.addEventListener("input",function(e){
+        let address = e.currentTarget.getAttribute("data-address");
+        dataObj[address].value = Number(e.currentTarget.innerText);
+        dataObj[address].formula = "";
+
+        //upstream clear krni hai
+        let currCellUpstream = dataObj[address].upstream;
+      
+        for(let i = 0;i<currCellUpstream.length;i++){
+          removeFromUpstream(address,currCellUpstream[i]);
+        }
+        dataObj[address].upstream = [];
+
+        //downstream ke cells ko update krna hai
+        let currCellDownstream = dataObj[address].downsteam;
+
+        for(let i = 0;i<currCellDownstream.length;i++){
+          updateDownstreamElements(currCellDownstream[i])
+        }
+        
+
+    });
   }
   grid.append(row);
+}
+
+function removeFromUpstream(dependent,onWhichIsDepending){
+  let newDownstream = [];
+  let oldDownstream = dataObj[onWhichIsDepending].downsteam;
+
+  for(let i = 0;i<oldDownstream.length;i++){
+    if(oldDownstream[i] != dependent)
+      newDownstream.push(oldDownstream[i]);
+  }
+  dataObj[onWhichIsDepending].downsteam = newDownstream;
+}
+
+function updateDownstreamElements(elementAddress){
+  // step-1 jis element ko update kr rahe  hai unki upstream elements ki current value le aao
+  // how-> unki upstream ke elements ka address use krke dataObj se unki value lao
+  // unhe as key value pair store krdo valObj  naam ke obj me
+
+  let valObj = {}
+  let currCellUpstream = dataObj[elementAddress].upstream;
+  for (let i =0;i<currCellUpstream.length;i++){
+    let upstreamCellAddress = currCellUpstream[i]
+    let upstreamCellValue = dataObj[upstreamCellValue].value
+    valObj[upstreamCellAddress] = upstreamCellValue;
+  }
+
+  // step-2 jis element ko update kr rahe hai uska formula le aao
+  let currFormula = dataObj[elementAddress].formula;
+  //formula ko space ke basis pe split maro
+  let formulaArr = currFormula.split(" ");
+ //split  marne ke baad jo array mili uspr loop mara and formula me jo variable hai(cells) unko unki value se replace krdo using valObj
+  for(let j = 0;j<formulaArr.length;j++){
+    if(valObj[formulaArr[i]]){
+      formulaArr[i] = valObj[formulaArr[i]];
+    }
+  }
+
+  //step-3 create krlo wapis formula formula from the array by joining it
+  currFormula = formulaArr.join(" ");
+  //step-4 evaluate the new value using eval function
+  let newValue = eval(currFormula);
+
+  //update the cell(jispr function call hua) in dataObj
+   dataObj[elementAddress].value = newValue;
+
+   //step 5 UI par update krdo new value
+   let cellOnUI = document.querySelector(`[data-address=${elementAddress}]`)
+   cellOnUI.innerText = newValue;
+   
+   //step-6 downstream leke aao jis element ko update kra just abhi kuki uspr bhi kuch element depend kr sakte hai
+   //unko bhi update krna padega
+   let currCellDownstream = dataObj[elementAddress].downsteam;
+
+   //check karo ki downstream me elements hai kya agr han to un sab par yehi function call krdo jise vo bhi update hojaye with newValue
+   if(currCellDownstream.length>0){
+      for(let k=0;k<currCellDownstream.length;k++){
+        updateDownstreamElements(currCellDownstream[k]);
+      }
+   }
 }
 
 // NOTES
@@ -72,9 +163,9 @@ for (let j = 1; j <= 100; j++) {
 
 
 // (2*)
-// A cell can have four arrays possible
+// A cell can have four things possible
 // A- value[]
-// B- formuls[]
+// B- formula[]
 // C- downStream[ jo cell humpar dependent hai ]
 // D- upStream[ jis cell par hum dependent hai ]
 
@@ -126,3 +217,4 @@ for (let j = 1; j <= 100; j++) {
 //    - fomula Change 
 //    - upstream purane elements ki downstream se remove hoge or new elements add karoge
 //    - downstream khudko update krlo
+

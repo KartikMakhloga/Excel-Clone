@@ -172,7 +172,7 @@ body {
   border: 1px solid green;
   flex-shrink: 0;
   outline: none;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .grid-selected-cell{
